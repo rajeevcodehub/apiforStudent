@@ -21,7 +21,7 @@ public class StudentController {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @GetMapping("/student/{studentId}")
-    public Student getIncident(@PathVariable("studentId") String studentId){
+    public Student getStudent(@PathVariable("studentId") String studentId){
         return studentsData.getStudent(studentId);
     }
 
@@ -42,7 +42,7 @@ public class StudentController {
     }
 
     @PostMapping("/updateStudent/{studentId}")
-    public Student updateTicket(@RequestBody String responseBody, @PathVariable("studentId") String studentId) throws Exception {
+    public Student updateStudent(@RequestBody String responseBody, @PathVariable("studentId") String studentId) throws Exception {
         JsonNode jsonNode = objectMapper.readTree(responseBody);
 
         return studentsData.updateStudent(studentId, jsonNode.get("name").asText());
